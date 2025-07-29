@@ -1,0 +1,573 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #5a5a5a; -webkit-text-stroke: #5a5a5a; background-color: #e7edf5}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #5a5a5a; -webkit-text-stroke: #5a5a5a; background-color: #e7edf5; min-height: 16.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Business Architecture Tool - Mockup&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-family: 'Inter', sans-serif;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.sidebar-link {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transition: all 0.2s ease-in-out;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.sidebar-link:hover, .sidebar-link.active {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #374151; /* gray-700 */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #ffffff;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transform: translateX(4px);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.view {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.view.active {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: block;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Styles for Flowchart */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.flowchart-node {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: absolute;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>align-items: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>justify-content: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 180px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 90px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 1rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 0.5rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: 2px solid;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease-in-out;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>z-index: 5;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.flowchart-node:hover {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transform: translateY(-5px);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.flowchart-node.is-main {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>cursor: pointer;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-style: dashed;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.flowchart-node.is-main:hover {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>border-style: solid;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.node-sales { background-color: #FEF3C7; border-color: #FBBF24; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.node-fund-manager { background-color: #DBEAFE; border-color: #93C5FD; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.node-risk-team { background-color: #FEE2E2; border-color: #FCA5A5; }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.flowchart-tooltip {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: absolute;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>bottom: 110%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>left: 50%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transform: translateX(-50%);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 1rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #1f2937; /* gray-800 */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: white;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 0.5rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 320px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>z-index: 10;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>pointer-events: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.flowchart-node:hover .flowchart-tooltip {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: block;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.flowchart-tooltip::after {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>content: '';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: absolute;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>top: 100%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>left: 50%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-left: -5px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-width: 5px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-style: solid;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-color: #1f2937 transparent transparent transparent;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body class="bg-gray-100"&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="flex h-screen"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;!-- Sidebar Navigation --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;aside class="w-64 bg-gray-800 text-gray-300 flex flex-col flex-shrink-0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="p-4 border-b border-gray-700"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h1 class="text-xl font-bold text-white"&gt;Business Architecture Navigator&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p class="text-sm text-gray-400"&gt;Asset Management Co.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;nav class="flex-1 p-2 space-y-1"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#" class="sidebar-link active flex items-center p-2 rounded-md" data-view="dashboard"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"&gt;&lt;/path&gt;&lt;/svg&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>Dashboard</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#" class="sidebar-link flex items-center p-2 rounded-md" data-view="capabilities"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"&gt;&lt;/path&gt;&lt;/svg&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>Capabilities</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#" class="sidebar-link flex items-center p-2 rounded-md" data-view="applications"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"&gt;&lt;/path&gt;&lt;/svg&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>Applications</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#" class="sidebar-link flex items-center p-2 rounded-md" data-view="processes"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"&gt;&lt;/path&gt;&lt;/svg&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>Processes</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#" class="sidebar-link flex items-center p-2 rounded-md" data-view="data"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"&gt;&lt;/path&gt;&lt;/svg&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>Data</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#" class="sidebar-link flex items-center p-2 rounded-md" data-view="people"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.124-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.124-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"&gt;&lt;/path&gt;&lt;/svg&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>People</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/nav&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="p-4 mt-auto border-t border-gray-700"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="flex items-center"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;img class="h-10 w-10 rounded-full" src="https://placehold.co/100x100/e2e8f0/334155?text=EK" alt="User Avatar" onerror="this.onerror=null;this.src='https://placehold.co/100x100/e2e8f0/334155?text=EK';"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="ml-3"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-sm font-medium text-white"&gt;Eram Khan&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-xs text-gray-400"&gt;Enterprise Architect&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/aside&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;!-- Main Content --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;main class="flex-1 p-6 overflow-y-auto"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- Dashboard View --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div id="dashboard" class="view active"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-3xl font-bold text-gray-800 mb-6"&gt;Dashboard&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;!-- Summary Cards --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-6 rounded-lg shadow-md"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-gray-500 text-sm font-medium"&gt;# Business Capabilities&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-3xl font-bold text-gray-800"&gt;124&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-6 rounded-lg shadow-md"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-gray-500 text-sm font-medium"&gt;# Applications&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-3xl font-bold text-gray-800"&gt;350&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-6 rounded-lg shadow-md"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-gray-500 text-sm font-medium"&gt;# Data Objects&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-3xl font-bold text-gray-800"&gt;890&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-6 rounded-lg shadow-md"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-gray-500 text-sm font-medium"&gt;# Processes&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-3xl font-bold text-gray-800"&gt;245&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                     </span>&lt;div class="bg-white p-6 rounded-lg shadow-md"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-gray-500 text-sm font-medium"&gt;# People&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-3xl font-bold text-gray-800"&gt;150&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="mt-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-6 rounded-lg shadow-md"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-lg font-semibold text-gray-700 mb-4"&gt;Processes per Capability&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="h-96"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                             </span>&lt;canvas id="processesPerCapabilityChart"&gt;&lt;/canvas&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- Capability Map View --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div id="capabilities" class="view"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-3xl font-bold text-gray-800 mb-2"&gt;Business Capability Map&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p class="text-gray-600 mb-6"&gt;Heatmap based on Capability Maturity.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white p-6 rounded-lg shadow-md"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;!-- Column 1: Client Business --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="space-y-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-lg font-semibold text-gray-700 border-b pb-2"&gt;Client Business&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="p-4 rounded-lg bg-green-100 border border-green-300"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-semibold text-green-800"&gt;Sales&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-green-700"&gt;Maturity: Leading&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="p-4 rounded-lg bg-yellow-100 border border-yellow-300"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-semibold text-yellow-800"&gt;Client Servicing&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-yellow-700"&gt;Maturity: Developing&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                             </span>&lt;div class="p-4 rounded-lg bg-green-100 border border-green-300"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-semibold text-green-800"&gt;Client Operations&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-green-700"&gt;Maturity: Leading&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;!-- Column 2: Investments--&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="space-y-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-lg font-semibold text-gray-700 border-b pb-2"&gt;Investments&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="p-4 rounded-lg bg-green-100 border border-green-300"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-semibold text-green-800"&gt;Investment R&amp;A&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-green-700"&gt;Maturity: Leading&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="p-4 rounded-lg bg-red-100 border border-red-300"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-semibold text-red-800"&gt;Portfolio Management&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-red-700"&gt;Maturity: Lagging&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="p-4 rounded-lg bg-yellow-100 border border-yellow-300"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-semibold text-yellow-800"&gt;Portfolio Construction&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-yellow-700"&gt;Maturity: Developing&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                             </span>&lt;div class="p-4 rounded-lg bg-green-100 border border-green-300"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-semibold text-green-800"&gt;Dealing&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-green-700"&gt;Maturity: Leading&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;!-- Column 3: Operations --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="space-y-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-lg font-semibold text-gray-700 border-b pb-2"&gt;Operations&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="p-4 rounded-lg bg-green-100 border border-green-300"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-semibold text-green-800"&gt;Investment Operations&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-green-700"&gt;Maturity: Leading&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="p-4 rounded-lg bg-yellow-100 border border-yellow-300"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-semibold text-yellow-800"&gt;Investment Risk Mgmt&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-yellow-700"&gt;Maturity: Developing&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                             </span>&lt;div class="p-4 rounded-lg bg-red-100 border border-red-300"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-semibold text-red-800"&gt;Fund Administration&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-red-700"&gt;Maturity: Lagging&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- Applications View --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div id="applications" class="view"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-3xl font-bold text-gray-800 mb-6"&gt;Application Portfolio&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white rounded-lg shadow-md overflow-hidden"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;table class="min-w-full divide-y divide-gray-200"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;thead class="bg-gray-50"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"&gt;Application Name&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"&gt;Owner&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"&gt;Status&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"&gt;Criticality&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"&gt;Action&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/thead&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;tbody class="bg-white divide-y divide-gray-200"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"&gt;Portfolio Management System&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;John Doe&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap"&gt;&lt;span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"&gt;Production&lt;/span&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap"&gt;&lt;span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"&gt;High&lt;/span&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm font-medium"&gt;&lt;a href="#" class="text-indigo-600 hover:text-indigo-900"&gt;Details&lt;/a&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"&gt;RiskEngine v2&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;Jane Smith&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap"&gt;&lt;span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"&gt;Production&lt;/span&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap"&gt;&lt;span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"&gt;High&lt;/span&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm font-medium"&gt;&lt;a href="#" class="text-indigo-600 hover:text-indigo-900"&gt;Details&lt;/a&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"&gt;CRM system&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;Peter Jones&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap"&gt;&lt;span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"&gt;Production&lt;/span&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap"&gt;&lt;span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800"&gt;Medium&lt;/span&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm font-medium"&gt;&lt;a href="#" class="text-indigo-600 hover:text-indigo-900"&gt;Details&lt;/a&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                             </span>&lt;tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"&gt;Legacy CRM&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;Sam Wilson&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap"&gt;&lt;span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"&gt;Decommissioning&lt;/span&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap"&gt;&lt;span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800"&gt;Low&lt;/span&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm font-medium"&gt;&lt;a href="#" class="text-indigo-600 hover:text-indigo-900"&gt;Details&lt;/a&gt;&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/tbody&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/table&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- Processes View --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div id="processes" class="view"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-3xl font-bold text-gray-800 mb-6"&gt;Process Flow&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white p-6 rounded-lg shadow-md overflow-x-auto"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div id="flowchart-container" class="relative h-[400px]" style="min-width: 1500px;"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;!-- Flowchart will be drawn here by JavaScript --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- Data View --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div id="data" class="view"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-3xl font-bold text-gray-800 mb-6"&gt;Data Architecture&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white p-10 rounded-lg shadow-md text-center"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-500"&gt;Data architecture models, data object catalogs, and data flow diagrams would appear here.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- People View --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div id="people" class="view"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-3xl font-bold text-gray-800 mb-6"&gt;People &amp; Roles&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white rounded-lg shadow-md overflow-hidden"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;table class="min-w-full divide-y divide-gray-200"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;thead class="bg-gray-50"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"&gt;Name&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"&gt;Role&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"&gt;Primary Capability&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"&gt;Team&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/thead&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;tbody class="bg-white divide-y divide-gray-200"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"&gt;Alex Vance&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;Enterprise Architect&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;All&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;Architecture&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"&gt;John Doe&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;Application Owner&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;Portfolio Management&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;Investments IT&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"&gt;Jane Smith&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;Risk Analyst&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;Investment Risk Mgmt&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;Risk Team&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"&gt;Peter Jones&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;Sales Manager&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;Sales&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;Client Business&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                             </span>&lt;tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"&gt;Sam Wilson&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;Fund Administrator&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;Fund Administration&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;Operations&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/tbody&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/table&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/main&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', function() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let processesChart;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const container = document.getElementById('flowchart-container');</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const processHierarchy = [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>{<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>id: "1", name: "Client Strategy Development", isMain: true, performedBy: "Sales",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>subProcesses: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>{ id: "1.1", name: "Identify Target Market", description: "Identify target market for offering", performedBy: "Sales", system: "N/A", dataIn: "Client Business", dataOut: "Client Business ID" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>{ id: "1.2", name: "Developing Proposition", description: "Develop proposition based on target market", performedBy: "Sales", system: "N/A", dataIn: "Client Business", dataOut: "Client Business" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>{ id: "1.3", name: "Identifying &amp; Planning Segments", description: "Identify segments within TG and plan sales strategy", performedBy: "Sales", system: "CRM", dataIn: "Client Business", dataOut: "Client Business" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>{<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>id: "2", name: "Investment Guidelines", isMain: true, performedBy: "Fund Manager",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>subProcesses: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>{ id: "2.1", name: "Investment Restrictions", description: "Define guidelines based on client preferences", performedBy: "Fund Manager", system: "N/A", dataIn: "N/A", dataOut: "Client Business" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>{ id: "2.2", name: "Compliance Restrictions", description: "Define guidelines based on compliance preferences", performedBy: "Risk Team", system: "N/A", dataIn: "N/A", dataOut: "N/A" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const expansionState = { '1': false, '2': false };</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// --- View Switching Logic ---</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const views = document.querySelectorAll('.view');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const links = document.querySelectorAll('.sidebar-link');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>function showView(viewId) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>views.forEach(view =&gt; view.classList.remove('active'));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>links.forEach(link =&gt; link.classList.remove('active'));</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const activeView = document.getElementById(viewId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (activeView) activeView.classList.add('active');</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const activeLink = document.querySelector(`.sidebar-link[data-view="${viewId}"]`);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (activeLink) activeLink.classList.add('active');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (viewId === 'dashboard') {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>drawProcessesPerCapabilityChart();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (viewId === 'processes') {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>drawFlowchart();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>links.forEach(link =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>link.addEventListener('click', (e) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>e.preventDefault();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const viewId = e.currentTarget.dataset.view;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>showView(viewId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// --- Chart.js for Dashboard ---</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>function drawProcessesPerCapabilityChart() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const ctx = document.getElementById('processesPerCapabilityChart');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (!ctx) return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (processesChart) processesChart.destroy();</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>processesChart = new Chart(ctx.getContext('2d'), {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>type: 'bar',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>data: {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>labels: ['Sales', 'Client Servicing', 'Client Operations', 'Product Capability', 'Marketing', 'Investment R&amp;A'],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>datasets: [{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>label: '# of Processes',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>data: [45, 25, 22, 38, 32, 18],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>backgroundColor: 'rgba(59, 130, 246, 0.6)',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>borderColor: 'rgba(59, 130, 246, 1)',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>borderWidth: 1</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>}]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>options: {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>responsive: true,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>maintainAspectRatio: false,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>scales: { y: { beginAtZero: true, title: { display: true, text: 'Number of Processes' } } },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>plugins: { legend: { display: false } }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// --- Flowchart Drawing Logic ---</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>function drawFlowchart() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (!container) return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>container.innerHTML = ''; // Clear previous content</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const visibleNodes = [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>processHierarchy.forEach(mainProcess =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>if (expansionState[mainProcess.id]) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>visibleNodes.push(...mainProcess.subProcesses);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>visibleNodes.push(mainProcess);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const svgNs = "http://www.w3.org/2000/svg";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const svg = document.createElementNS(svgNs, 'svg');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>svg.setAttribute('class', 'absolute top-0 left-0 w-full h-full');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>svg.setAttribute('style', 'z-index: 0;');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const defs = document.createElementNS(svgNs, 'defs');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const marker = document.createElementNS(svgNs, 'marker');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>marker.setAttribute('id', 'arrowhead');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>marker.setAttribute('viewBox', '0 0 10 10');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>marker.setAttribute('refX', '8');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>marker.setAttribute('refY', '5');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>marker.setAttribute('markerWidth', '6');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>marker.setAttribute('markerHeight', '6');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>marker.setAttribute('orient', 'auto-start-reverse');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const polygon = document.createElementNS(svgNs, 'polygon');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>polygon.setAttribute('points', '0 0, 10 5, 0 10');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>polygon.setAttribute('fill', '#6b7280');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>marker.appendChild(polygon);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>defs.appendChild(marker);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>svg.appendChild(defs);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>container.appendChild(svg);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const nodeWidth = 180;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const horizontalGap = 80;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const startX = 50;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const startY = 150;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>visibleNodes.forEach((process, index) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const nodeEl = document.createElement('div');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>nodeEl.id = `process-node-${process.id.replace('.', '-')}`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>nodeEl.dataset.id = process.id;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>let roleClass = '';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>if (process.performedBy === 'Sales') roleClass = 'node-sales';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>else if (process.performedBy === 'Fund Manager') roleClass = 'node-fund-manager';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>else if (process.performedBy === 'Risk Team') roleClass = 'node-risk-team';</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>nodeEl.className = `flowchart-node ${roleClass} ${process.isMain ? 'is-main' : ''}`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>nodeEl.style.left = `${startX + index * (nodeWidth + horizontalGap)}px`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>nodeEl.style.top = `${startY}px`;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>nodeEl.innerHTML = `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span class="font-semibold text-gray-800"&gt;${process.id} ${process.name}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="flowchart-tooltip"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;strong class="text-gray-400"&gt;Description:&lt;/strong&gt; &lt;span class="text-white"&gt;${process.description || 'N/A'}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;strong class="text-gray-400"&gt;Performed By:&lt;/strong&gt; &lt;span class="text-white"&gt;${process.performedBy || 'N/A'}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;strong class="text-gray-400"&gt;System:&lt;/strong&gt; &lt;span class="text-white"&gt;${process.system || 'N/A'}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;strong class="text-gray-400"&gt;Data In:&lt;/strong&gt; &lt;span class="text-white"&gt;${process.dataIn || 'N/A'}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;strong class="text-gray-400"&gt;Data Out:&lt;/strong&gt; &lt;span class="text-white"&gt;${process.dataOut || 'N/A'}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>container.appendChild(nodeEl);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Draw arrows</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>setTimeout(() =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>for (let i = 0; i &lt; visibleNodes.length - 1; i++) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>const fromNode = visibleNodes[i];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>const toNode = visibleNodes[i+1];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>const fromEl = document.getElementById(`process-node-${fromNode.id.replace('.', '-')}`);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>const toEl = document.getElementById(`process-node-${toNode.id.replace('.', '-')}`);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>if (fromEl &amp;&amp; toEl) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>const fromRect = fromEl.getBoundingClientRect();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>const toRect = toEl.getBoundingClientRect();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>const containerRect = container.getBoundingClientRect();</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>const x1 = fromRect.right - containerRect.left;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>const y1 = fromRect.top - containerRect.top + fromRect.height / 2;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>const x2 = toRect.left - containerRect.left;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>const y2 = toRect.top - containerRect.top + toRect.height / 2;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>const line = document.createElementNS(svgNs, 'line');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>line.setAttribute('x1', x1);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>line.setAttribute('y1', y1);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>line.setAttribute('x2', x2 - 8);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>line.setAttribute('y2', y2);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>line.setAttribute('stroke', '#6b7280');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>line.setAttribute('stroke-width', '2');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>line.setAttribute('marker-end', 'url(#arrowhead)');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>svg.appendChild(line);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}, 0);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (container) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>container.addEventListener('click', (e) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const nodeEl = e.target.closest('.flowchart-node.is-main');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>if (nodeEl) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>const nodeId = nodeEl.dataset.id;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>if (expansionState.hasOwnProperty(nodeId)) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>expansionState[nodeId] = !expansionState[nodeId];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>drawFlowchart();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Initial calls</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>showView('dashboard');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
